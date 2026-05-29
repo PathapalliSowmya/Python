@@ -1,0 +1,54 @@
+class MiniBank:
+    def __init__(self,name,balance):
+        self.name=name
+        self.__balance=balance
+    def Deposit(self,amount):
+        self.amount=amount
+        if self.amount<=0:
+            print("Invalid deposit amount")
+        elif self.amount>0:
+            self.__balance=self.__balance+amount
+            print(f"₹{amount} is deposited successfully")
+        else:
+            print("Invalid amount")
+    def withdraw(self,amount):
+        self.amount=amount
+        if self.amount<=0:
+            print("Invalid withdrawal amount")
+        elif self.amount>self.__balance:
+            print("insufficient Balance")
+        else:
+            self.__balance=self.__balance-amount
+            print(f"₹{amount} is withdrawn successfully")
+    def Account_details(self):
+        print(f"----Account Details----")
+        print(f"Account Holder: {self.name}")
+        print(f"Current Balance : ₹ {self.__balance}")
+    def check_balance(self):
+        print(f"Available balance: ₹ {self.__balance}")
+    def Exit(self):
+        print("Thank you for using Mini Bank")
+M=MiniBank("Sowmya",1000)
+while True:
+    print("=====MINI BANK MENU=====")
+    print("1. Deposit")
+    print("2. Withdraw")
+    print("3. Check Balance")
+    print("4. Account Details")
+    print("5. Exit")
+    choice=input("Enter your choice: ")
+    if choice=='1':
+        amount=int(input("Enter deposit amount: ₹ "))
+        M.Deposit(amount)
+    elif choice=='2':
+        amount=int(input("Enter withdrawal amount: ₹"))
+        M.withdraw(amount)
+    elif choice=='3':
+        M.check_balance()
+    elif choice=='4':
+        M.Account_details()
+    elif choice=='5':
+        M.Exit()
+        break
+    else:
+        print("Invalid choice.Try again")
